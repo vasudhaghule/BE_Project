@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+header {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #123;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 50px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-button {
+  /* background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px; */
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 30%;
+}
+
+.custom-button:hover {
+  background-color: #5e98d6;
+}
+
+.preview-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.preview-image {
+  /* max-width: 50%;
+  max-height: 200px;
+  margin-top: 10px; */
+  width: 400px;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+  padding: 6px 12px;
+  color: green;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.classification-report-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.classification-report-container pre {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
