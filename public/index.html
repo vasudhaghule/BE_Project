@@ -1,1 +1,67 @@
 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
+
+interface MetricsData {
+  accuracy: number;
+  classification_report: string;
+  model_summary: string;
+}
+
+interface MetricsProps {
+  onClose: () => void;
+}
+const Metrics: React.FC<MetricsProps> = ({ onClose }) => {
+  const [metrics, setMetrics] = useState<MetricsData | null>(null);
+
+  useEffect(() => {
+    fetchMetrics();
+  }, []);
+
+  const fetchMetrics = () => {
+    axios
+      .get<MetricsData>("http://127.0.0.1:5000/metrics")
+      .then((response) => {
+        setMetrics(response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  const handleClose = () => {
+    setMetrics(null);
+    onClose(); // Call the onClose callback passed from the parent component
+  };
+
+  return (
+    <div className="container">
+      <header>
+        <h2>Emotion Recognition Metrics</h2>
+      </header>
+
+      {metrics && (
+        <div className="metrics-container">
+          <button className="button-container" onClick={handleClose}>
+            Close
+          </button>
+
+          <h2>Model Summary</h2>
+          <div>
+            <pre>{metrics.model_summary}</pre>
+          </div>
+
+          <p>Accuracy: {metrics.accuracy}</p>
+
+          <h2>Classification Report</h2>
+          <div>
+            <pre>{metrics.classification_report}</pre>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Metrics;
